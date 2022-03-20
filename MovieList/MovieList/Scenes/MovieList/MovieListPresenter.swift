@@ -1,7 +1,8 @@
 import Foundation
 
 protocol MovieListPresenting: AnyObject {
-    
+    func presentLoading()
+    func stopPresentingLoading()
 }
 
 final class MovieListPresenter {
@@ -14,5 +15,11 @@ final class MovieListPresenter {
 }
 
 extension MovieListPresenter: MovieListPresenting {
+    func presentLoading() {
+        viewController?.displayLoading()
+    }
     
+    func stopPresentingLoading() {
+        viewController?.hideLoading()
+    }
 }
