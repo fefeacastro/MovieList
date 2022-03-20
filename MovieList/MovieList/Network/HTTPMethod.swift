@@ -1,5 +1,5 @@
 import Foundation
 
 enum HTTPMethod: String {
-  case get = "GET"
+    case get = "GET"
 }

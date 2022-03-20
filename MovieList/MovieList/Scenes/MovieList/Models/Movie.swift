@@ -3,5 +3,6 @@ struct Movie: Decodable {
     let budget: Int
     let overview: String
     let adult: Bool
+    let posterPath: String
     let genres: [Genre]
 }
