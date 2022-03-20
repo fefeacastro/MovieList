@@ -15,6 +15,9 @@
 		532F71F527E7823200C5E09D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532F71F327E7823200C5E09D /* LaunchScreen.storyboard */; };
 		532F720027E7823200C5E09D /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F71FF27E7823200C5E09D /* MovieListTests.swift */; };
 		532F720B27E7823300C5E09D /* MovieListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F720A27E7823300C5E09D /* MovieListUITests.swift */; };
+		532F721B27E7864700C5E09D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F721A27E7864700C5E09D /* HTTPMethod.swift */; };
+		532F721D27E786DD00C5E09D /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F721C27E786DD00C5E09D /* WebService.swift */; };
+		532F721F27E7872000C5E09D /* WebServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F721E27E7872000C5E09D /* WebServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		532F720627E7823300C5E09D /* MovieListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		532F720A27E7823300C5E09D /* MovieListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListUITests.swift; sourceTree = "<group>"; };
 		532F720C27E7823300C5E09D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		532F721A27E7864700C5E09D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		532F721C27E786DD00C5E09D /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		532F721E27E7872000C5E09D /* WebServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		532F71E727E7823100C5E09D /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				532F721927E7861300C5E09D /* Scenes */,
+				532F721827E785F600C5E09D /* Network */,
 				532F71E827E7823100C5E09D /* AppDelegate.swift */,
 				532F71EA27E7823100C5E09D /* SceneDelegate.swift */,
 				532F71EC27E7823100C5E09D /* ViewController.swift */,
@@ -126,6 +134,23 @@
 				532F720C27E7823300C5E09D /* Info.plist */,
 			);
 			path = MovieListUITests;
+			sourceTree = "<group>";
+		};
+		532F721827E785F600C5E09D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				532F721A27E7864700C5E09D /* HTTPMethod.swift */,
+				532F721C27E786DD00C5E09D /* WebService.swift */,
+				532F721E27E7872000C5E09D /* WebServiceError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		532F721927E7861300C5E09D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532F721B27E7864700C5E09D /* HTTPMethod.swift in Sources */,
+				532F721F27E7872000C5E09D /* WebServiceError.swift in Sources */,
 				532F71ED27E7823100C5E09D /* ViewController.swift in Sources */,
 				532F71E927E7823100C5E09D /* AppDelegate.swift in Sources */,
+				532F721D27E786DD00C5E09D /* WebService.swift in Sources */,
 				532F71EB27E7823100C5E09D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
