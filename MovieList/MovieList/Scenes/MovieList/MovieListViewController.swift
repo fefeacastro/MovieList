@@ -6,7 +6,7 @@ protocol MovieListDisplay: AnyObject {
     func displayMovies(movies: [Movie])
 }
 
-final class MovieListViewController: ViewController<MovieListInteracting>, UITableViewDataSource, UITableViewDelegate {
+final class MovieListViewController: ViewController<MovieListInteracting> {
     
     lazy var activity: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
@@ -27,10 +27,19 @@ final class MovieListViewController: ViewController<MovieListInteracting>, UITab
         return tableView
     }()
     
+    private var model = [Movie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Filmes"
         interactor.requestMovies()
+    }
+    
+    override func loadView() {
+        let view = UIView()
+        view.backgroundColor = .white
+    
+        self.view = view
     }
     
     // MARK: - View Configuration
@@ -38,15 +47,13 @@ final class MovieListViewController: ViewController<MovieListInteracting>, UITab
         view.addSubview(tableView)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieCell.self), for: indexPath) as? MovieCell else {
-            return UITableViewCell()
-        }
-        return cell
+    override func setupConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        ])
     }
 }
 
@@ -61,6 +68,22 @@ extension MovieListViewController: MovieListDisplay {
     }
     
     func displayMovies(movies: [Movie]) {
-        
+        self.model = movies
+        self.tableView.reloadData()
+    }
+}
+
+extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MovieCell.self), for: indexPath) as? MovieCell else {
+            return UITableViewCell()
+        }
+        let movie = model[indexPath.row]
+        cell.setup(movie)
+        return cell
     }
 }

@@ -26,6 +26,7 @@ class MovieCell: UITableViewCell {
     
     func setup(_ movie: Movie) {
         titleLabel.text = movie.title
+        buildLayout()
         //movieImage.image =
     }
 }

@@ -22,6 +22,7 @@ extension MovieListInteractor: MovieListInteracting {
             switch result {
             case let .success(moviesResponse):
                 self.moviesResponse = moviesResponse
+                self.presenter.presentMovies(movies: moviesResponse.results)
             case let .failure(error):
                 self.handleRequestFailure(error)
             }

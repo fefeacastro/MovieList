@@ -11,7 +11,7 @@ final class MoviesSplitFactory {
         navigationController.navigationBar.isTranslucent = false
 
         splitViewController.viewControllers = [navigationController]
-        splitViewController.preferredDisplayMode = .allVisible
+        splitViewController.preferredDisplayMode = .automatic
         splitViewController.delegate = self
 
         return splitViewController
@@ -24,7 +24,6 @@ extension MoviesSplitFactory: UISplitViewControllerDelegate {
         collapseSecondary secondaryViewController: UIViewController,
         onto primaryViewController: UIViewController
     ) -> Bool {
-
         return true
     }
 }
