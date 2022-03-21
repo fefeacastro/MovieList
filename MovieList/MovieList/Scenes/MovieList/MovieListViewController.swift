@@ -20,7 +20,7 @@ final class MovieListViewController: ViewController<MovieListInteracting> {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 120
+        tableView.rowHeight = 140
         tableView.register(MovieCell.self, forCellReuseIdentifier: String(describing: MovieCell.self))
         tableView.backgroundView = activity
         tableView.tableFooterView = UIView()

@@ -16,6 +16,14 @@ class MovieCell: UITableViewCell {
         return label
     }()
     
+    lazy var overviewLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -26,6 +34,7 @@ class MovieCell: UITableViewCell {
     
     func setup(_ movie: Movie) {
         titleLabel.text = movie.title
+        overviewLabel.text = movie.overview
         buildLayout()
         //movieImage.image =
     }
@@ -33,20 +42,26 @@ class MovieCell: UITableViewCell {
 
 extension MovieCell: ViewConfiguration {
     func buildViewHierarchy() {
-        addSubview(movieImage)
-        addSubview(titleLabel)
+        //contentView.addSubview(movieImage)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(overviewLabel)
     }
     
     func setupConstraints() {
-        movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
-        movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        movieImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        movieImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+//        movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//        movieImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        movieImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        titleLabel.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 16).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        //titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+        overviewLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+        overviewLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        overviewLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor).isActive = true
     }
     
 }
