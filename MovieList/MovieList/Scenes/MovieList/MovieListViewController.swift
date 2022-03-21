@@ -74,7 +74,13 @@ extension MovieListViewController: MovieListDisplay {
     }
     
     func displayMessage(message: String) {
-        
+        let errorView = ErrorView(errorMessage: message) { [weak self] in
+            self?.interactor.requestMovies()
+        }
+        tableView.backgroundView = errorView
+        errorView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+        errorView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        errorView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
 

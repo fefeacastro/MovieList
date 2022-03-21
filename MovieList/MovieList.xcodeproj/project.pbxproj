@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5311E2D527E91D230079BA4E /* MovieListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311E2D427E91D230079BA4E /* MovieListInteractorTests.swift */; };
 		5311E2D727E921730079BA4E /* MovieListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311E2D627E921730079BA4E /* MovieListPresenterTests.swift */; };
+		5311E2D927E92F1C0079BA4E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311E2D827E92F1C0079BA4E /* ErrorView.swift */; };
+		5311E2DD27E930400079BA4E /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5311E2DC27E930400079BA4E /* Font.swift */; };
 		532F71E927E7823100C5E09D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F71E827E7823100C5E09D /* AppDelegate.swift */; };
 		532F71EB27E7823100C5E09D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F71EA27E7823100C5E09D /* SceneDelegate.swift */; };
 		532F71ED27E7823100C5E09D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F71EC27E7823100C5E09D /* ViewController.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		5311E2D427E91D230079BA4E /* MovieListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListInteractorTests.swift; sourceTree = "<group>"; };
 		5311E2D627E921730079BA4E /* MovieListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPresenterTests.swift; sourceTree = "<group>"; };
+		5311E2D827E92F1C0079BA4E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		5311E2DC27E930400079BA4E /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		532F71E527E7823100C5E09D /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		532F71E827E7823100C5E09D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		532F71EA27E7823100C5E09D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,14 @@
 				5311E2D627E921730079BA4E /* MovieListPresenterTests.swift */,
 			);
 			path = MovieCell;
+			sourceTree = "<group>";
+		};
+		5311E2DA27E92FE70079BA4E /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				5311E2DC27E930400079BA4E /* Font.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		532F71DC27E7823100C5E09D = {
@@ -244,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				532F723327E7BC3300C5E09D /* BaseView */,
+				5311E2DA27E92FE70079BA4E /* Style */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -277,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				532F724A27E7E72D00C5E09D /* MovieCell.swift */,
+				5311E2D827E92F1C0079BA4E /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -414,6 +428,7 @@
 				532F724427E7D5F800C5E09D /* BaseWebService.swift in Sources */,
 				532F722627E7B80900C5E09D /* MovieListInteractor.swift in Sources */,
 				532F722D27E7B84700C5E09D /* MovieListService.swift in Sources */,
+				5311E2D927E92F1C0079BA4E /* ErrorView.swift in Sources */,
 				532F723727E7BC5C00C5E09D /* ViewConfiguration.swift in Sources */,
 				532F723027E7B8D200C5E09D /* MovieListViewController.swift in Sources */,
 				532F725827E7F3F100C5E09D /* MoviesSplitFactory.swift in Sources */,
@@ -421,6 +436,7 @@
 				532F722B27E7B83700C5E09D /* MovieListCoordinator.swift in Sources */,
 				532F724627E7DF8700C5E09D /* MoviesResponse.swift in Sources */,
 				532F71ED27E7823100C5E09D /* ViewController.swift in Sources */,
+				5311E2DD27E930400079BA4E /* Font.swift in Sources */,
 				532F71E927E7823100C5E09D /* AppDelegate.swift in Sources */,
 				532F725427E7F01100C5E09D /* Strings.swift in Sources */,
 				532F721D27E786DD00C5E09D /* WebService.swift in Sources */,
