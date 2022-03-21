@@ -5,7 +5,7 @@ protocol MovieListInteracting: AnyObject {
 final class MovieListInteractor {
     private let presenter: MovieListPresenting
     private let service: MovieListServicing
-    private var moviesResponse = [MoviesResponse]()
+    private var moviesResponse = MoviesResponse(results: [Movie]())
     
     init(presenter: MovieListPresenting, service: MovieListServicing) {
         self.presenter = presenter
