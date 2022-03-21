@@ -4,5 +4,4 @@ struct Movie: Decodable {
     let overview: String?
     let adult: Bool?
     let posterPath: String?
-    let genres: [Genre]?
 }
