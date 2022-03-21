@@ -1,4 +1,4 @@
-struct Movie: Decodable {
+struct Movie: Decodable, Equatable {
     let title: String?
     let overview: String?
     let adult: Bool?

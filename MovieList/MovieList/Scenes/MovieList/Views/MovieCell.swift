@@ -24,6 +24,15 @@ class MovieCell: UITableViewCell {
         return label
     }()
     
+    lazy var adultLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.text = "+18"
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -35,16 +44,19 @@ class MovieCell: UITableViewCell {
     func setup(_ movie: Movie) {
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
+        if movie.adult ?? false {
+            adultLabel.isHidden = false
+        }
         buildLayout()
-        //movieImage.image =
     }
 }
 
 extension MovieCell: ViewConfiguration {
     func buildViewHierarchy() {
-        //contentView.addSubview(movieImage)
+//        contentView.addSubview(movieImage)
         contentView.addSubview(titleLabel)
         contentView.addSubview(overviewLabel)
+        contentView.addSubview(adultLabel)
     }
     
     func setupConstraints() {
@@ -56,12 +68,14 @@ extension MovieCell: ViewConfiguration {
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        //titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
         overviewLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         overviewLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
         overviewLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor).isActive = true
+        
+        adultLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+        adultLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3).isActive = true
     }
     
 }
