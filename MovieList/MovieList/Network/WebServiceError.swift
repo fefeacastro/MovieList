@@ -6,5 +6,4 @@ enum WebServiceError: Error {
     case unexpected
     case URLFormat
     case unparseable
-    case empty
 }

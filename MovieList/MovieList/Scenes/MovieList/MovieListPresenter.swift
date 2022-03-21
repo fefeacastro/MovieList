@@ -4,6 +4,7 @@ protocol MovieListPresenting: AnyObject {
     func presentLoading()
     func stopPresentingLoading()
     func presentMovies(movies: [Movie])
+    func presentErrorMessage(message: String)
 }
 
 final class MovieListPresenter {
@@ -26,5 +27,9 @@ extension MovieListPresenter: MovieListPresenting {
     
     func stopPresentingLoading() {
         viewController?.hideLoading()
+    }
+    
+    func presentErrorMessage(message: String) {
+        viewController?.displayMessage(message: message)
     }
 }

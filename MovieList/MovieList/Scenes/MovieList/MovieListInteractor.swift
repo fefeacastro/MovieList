@@ -21,8 +21,7 @@ extension MovieListInteractor: MovieListInteracting {
             self.presenter.stopPresentingLoading()
             switch result {
             case let .success(moviesResponse):
-                self.moviesResponse = moviesResponse
-                self.presenter.presentMovies(movies: moviesResponse.results)
+                self.handleSuccess(moviesResponse)
             case let .failure(error):
                 self.handleRequestFailure(error)
             }
@@ -32,6 +31,21 @@ extension MovieListInteractor: MovieListInteracting {
 
 private extension MovieListInteractor {
     func handleRequestFailure(_ error: WebServiceError) {
-        
+        switch error {
+        case .noInternet:
+            self.presenter.presentErrorMessage(message: Strings.Errors.noInternet)
+        case .timedOut:
+            self.presenter.presentErrorMessage(message: Strings.Errors.timeOut)
+        default:
+            self.presenter.presentErrorMessage(message: Strings.Errors.unexpected)
+        }
+    }
+    
+    func handleSuccess(_ response: MoviesResponse) {
+        guard response.results.isEmpty else {
+            self.presenter.presentMovies(movies: response.results)
+            return
+        }
+        self.presenter.presentErrorMessage(message: Strings.Errors.noMovies)
     }
 }

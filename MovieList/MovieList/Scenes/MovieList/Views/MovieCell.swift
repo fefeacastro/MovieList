@@ -27,7 +27,7 @@ class MovieCell: UITableViewCell {
     lazy var adultLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.text = "+18"
+        label.text = Strings.Adult.isAdult
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

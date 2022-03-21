@@ -4,6 +4,7 @@ protocol MovieListDisplay: AnyObject {
     func displayLoading()
     func hideLoading()
     func displayMovies(movies: [Movie])
+    func displayMessage(message: String)
 }
 
 final class MovieListViewController: ViewController<MovieListInteracting> {
@@ -70,6 +71,10 @@ extension MovieListViewController: MovieListDisplay {
     func displayMovies(movies: [Movie]) {
         self.model = movies
         self.tableView.reloadData()
+    }
+    
+    func displayMessage(message: String) {
+        
     }
 }
 
