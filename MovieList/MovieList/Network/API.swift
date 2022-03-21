@@ -34,6 +34,6 @@ struct API {
     }
 
     var value: String {
-        "\(host)/\(version)/\(path.rawValue)/\(mediaType.rawValue)/\(timeWindow.rawValue)?\(headerKey)\(key)"
+        "\(host)/\(version)/\(path.rawValue)/\(mediaType.rawValue)/\(timeWindow.rawValue)\(headerKey)\(key)"
     }
 }

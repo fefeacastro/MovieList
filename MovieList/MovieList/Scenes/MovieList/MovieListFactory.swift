@@ -1,7 +1,7 @@
 import UIKit
 
-enum MovieListFactory {
-    static func make() -> UIViewController {
+final class MovieListFactory {
+    func make() -> UIViewController {
         let coordinator = MovieListCoordinator()
         let presenter = MovieListPresenter(coordinator: coordinator)
         let service = MovieListService()

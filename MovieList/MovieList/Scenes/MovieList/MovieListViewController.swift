@@ -3,6 +3,7 @@ import UIKit
 protocol MovieListDisplay: AnyObject {
     func displayLoading()
     func hideLoading()
+    func displayMovies(movies: [Movie])
 }
 
 final class MovieListViewController: ViewController<MovieListInteracting>, UITableViewDataSource, UITableViewDelegate {
@@ -26,6 +27,17 @@ final class MovieListViewController: ViewController<MovieListInteracting>, UITab
         return tableView
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Filmes"
+        interactor.requestMovies()
+    }
+    
+    // MARK: - View Configuration
+    override func buildViewHierarchy() {
+        view.addSubview(tableView)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -46,5 +58,9 @@ extension MovieListViewController: MovieListDisplay {
     func hideLoading() {
         activity.stopAnimating()
         tableView.backgroundView = nil
+    }
+    
+    func displayMovies(movies: [Movie]) {
+        
     }
 }
