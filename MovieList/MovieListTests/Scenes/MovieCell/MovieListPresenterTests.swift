@@ -68,4 +68,15 @@ class MovieListPresenterTests: XCTestCase {
 
         XCTAssertEqual(viewController.hideLoadingCallsCount, 1)
     }
+    
+    // MARK: - presentErrorMessage
+    func testPresentErrorMessage_ShouldCallDisplayMessage() throws {
+        let message = "Message"
+        presenter.presentErrorMessage(message: message)
+
+        let fakeMessage = try XCTUnwrap(viewController.message)
+
+        XCTAssertEqual(viewController.displayMessageCallsCount, 1)
+        XCTAssertEqual(fakeMessage, message)
+    }
 }
