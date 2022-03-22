@@ -67,4 +67,44 @@ class MovieListInteractorTests: XCTestCase {
         XCTAssertEqual(presenter.presentLoadingCallsCount, 1)
         XCTAssertEqual(movies, fakeMovies)
     }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithNoMovieMessage_WhenServiceReturnsSuccessWithNoMovie() throws {
+        service.result = .success(MoviesResponse(results: []))
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.noMovies)
+    }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithUnexpectedMessage_WhenServiceReturnsUnexpected() throws {
+        service.result = .failure(.unexpected)
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.unexpected)
+    }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithTimeOutMessage_WhenServiceReturnsTimedOutError() throws {
+        service.result = .failure(.timedOut)
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.timeOut)
+    }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithNoInternetMessage_WhenServiceReturnsNotConnectedToInternetError() throws {
+        service.result = .failure(.noInternet)
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.noInternet)
+    }
 }
