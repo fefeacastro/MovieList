@@ -5,7 +5,9 @@ private final class MovieListSpyViewController: MovieListDisplay {
     private(set) var displayLoadingCallsCount = 0
     private(set) var hideLoadingCallsCount = 0
     private(set) var displayMoviesCallsCount = 0
+    private(set) var displayMessageCallsCount = 0
     private(set) var movies: [Movie]?
+    private(set) var message: String?
     
     func displayLoading() {
         displayLoadingCallsCount += 1
@@ -18,6 +20,11 @@ private final class MovieListSpyViewController: MovieListDisplay {
     func displayMovies(movies: [Movie]) {
         displayMoviesCallsCount += 1
         self.movies = movies
+    }
+    
+    func displayMessage(message: String) {
+        displayMessageCallsCount += 1
+        self.message = message
     }
 }
 

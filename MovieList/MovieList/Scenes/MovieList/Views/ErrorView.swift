@@ -4,14 +4,17 @@ final class ErrorView: UIView {
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 2
+        stackView.spacing = 10
         return stackView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.title()
+        label.text = Strings.Errors.ops
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -61,6 +64,9 @@ extension ErrorView: ViewConfiguration {
     }
     
     func setupConstraints() {
+        translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
 }

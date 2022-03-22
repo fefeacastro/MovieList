@@ -80,7 +80,6 @@ extension MovieListViewController: MovieListDisplay {
         tableView.backgroundView = errorView
         errorView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
         errorView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-        errorView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
 

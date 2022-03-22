@@ -5,7 +5,9 @@ private final class MovieListPresenterSpy: MovieListPresenting {
     private(set) var presentLoadingCallsCount = 0
     private(set) var stopPresentingLoadingCallsCount = 0
     private(set) var presentMoviesCallsCount = 0
+    private(set) var presentErrorMessageCallsCount = 0
     private(set) var movies: [Movie]?
+    private(set) var message: String?
     
     func presentLoading() {
         presentLoadingCallsCount += 1
@@ -18,6 +20,11 @@ private final class MovieListPresenterSpy: MovieListPresenting {
     func presentMovies(movies: [Movie]) {
         presentMoviesCallsCount += 1
         self.movies = movies
+    }
+    
+    func presentErrorMessage(message: String) {
+        presentErrorMessageCallsCount += 1
+        self.message = message
     }
 }
 
