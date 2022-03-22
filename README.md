@@ -6,11 +6,13 @@ More info about the API here: https://developers.themoviedb.org/4/getting-starte
 
 ## Installation
 
-1 - Clone or download the project
-2 - Run
+- Clone or download the project
+
+- Run
 
 ## Images
+| Light | Dark |
+:-:|:-:
+<img src="https://user-images.githubusercontent.com/48795348/159585627-b617a627-74f8-4598-b206-8c2a0a79e054.png" width="350">|<img src="https://user-images.githubusercontent.com/48795348/159585643-c706fa3b-f5be-4cd0-92e4-c587eb97b941.png" width="350">
 
-Light | Dark
 
-/var/folders/nf/_4r_98vs36qb_vvmg7trjjwc0000gn/T/simulator_screenshot_0A582265-EF7A-4991-93AB-73BF9552D81A.png | /var/folders/nf/_4r_98vs36qb_vvmg7trjjwc0000gn/T/simulator_screenshot_E91A0449-B493-49D0-8878-936059A9FF02.png
