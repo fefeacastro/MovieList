@@ -6,6 +6,7 @@ private final class MovieListSpyViewController: MovieListDisplay {
     private(set) var hideLoadingCallsCount = 0
     private(set) var displayMoviesCallsCount = 0
     private(set) var displayMessageCallsCount = 0
+    private(set) var displayTryAgainButtonCallsCount = 0
     private(set) var movies: [Movie]?
     private(set) var message: String?
     
@@ -25,6 +26,10 @@ private final class MovieListSpyViewController: MovieListDisplay {
     func displayMessage(message: String) {
         displayMessageCallsCount += 1
         self.message = message
+    }
+    
+    func displayTryAgainButton() {
+        displayTryAgainButtonCallsCount += 1
     }
 }
 
@@ -78,5 +83,12 @@ class MovieListPresenterTests: XCTestCase {
 
         XCTAssertEqual(viewController.displayMessageCallsCount, 1)
         XCTAssertEqual(fakeMessage, message)
+    }
+    
+    // MARK: - presentErrorMessage
+    func testPresentLoading_ShouldCallDisplayMessage() {
+        presenter.presentLoading()
+
+        XCTAssertEqual(viewController.displayLoadingCallsCount, 1)
     }
 }

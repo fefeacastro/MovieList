@@ -56,12 +56,18 @@ extension MovieCell: ViewConfiguration {
         contentView.addSubview(titleLabel)
         contentView.addSubview(overviewLabel)
         contentView.addSubview(adultLabel)
+//        contentView.addSubview(movieImage)
     }
     
     func setupConstraints() {
+//        movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+//        movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//        movieImage.heightAnchor.constraint(equalToConstant: 110).isActive = true
+//        movieImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7).isActive = true
         
         overviewLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true

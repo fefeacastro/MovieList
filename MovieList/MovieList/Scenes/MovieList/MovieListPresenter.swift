@@ -5,6 +5,7 @@ protocol MovieListPresenting: AnyObject {
     func stopPresentingLoading()
     func presentMovies(movies: [Movie])
     func presentErrorMessage(message: String)
+    func presentTryAgainButton()
 }
 
 final class MovieListPresenter {
@@ -31,5 +32,9 @@ extension MovieListPresenter: MovieListPresenting {
     
     func presentErrorMessage(message: String) {
         viewController?.displayMessage(message: message)
+    }
+    
+    func presentTryAgainButton() {
+        viewController?.displayTryAgainButton()
     }
 }

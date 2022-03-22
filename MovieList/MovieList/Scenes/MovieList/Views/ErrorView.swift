@@ -28,21 +28,8 @@ final class ErrorView: UIView {
         return label
     }()
     
-    private let button: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.layer.cornerRadius = 8
-        button.setTitle(Strings.Errors.tryAgain, for: .normal)
-        button.titleLabel?.font = UIFont.medium(weight: .bold)
-        button.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
-        return button
-    }()
-    
-    private let tryAgainAction: (() -> Void)?
-    
     // MARK: - Lyfe Cycle
-    init(frame: CGRect = .zero, errorMessage: String, tryAgainAction: (() -> Void)?) {
-        self.tryAgainAction = tryAgainAction
+    init(frame: CGRect = .zero, errorMessage: String) {
         super.init(frame: frame)
         descriptionLabel.text = errorMessage
         buildLayout()
@@ -60,19 +47,11 @@ extension ErrorView: ViewConfiguration {
         addSubview(stackView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(descriptionLabel)
-        stackView.addArrangedSubview(button)
     }
     
     func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
         stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    }
-    
-}
-
-private extension ErrorView {
-    @objc func tryAgain() {
-        tryAgainAction?()
     }
 }

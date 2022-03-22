@@ -35,7 +35,6 @@
 		532F724927E7E21600C5E09D /* BaseWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F724827E7E21600C5E09D /* BaseWebServiceTests.swift */; };
 		532F724B27E7E72D00C5E09D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F724A27E7E72D00C5E09D /* MovieCell.swift */; };
 		532F725427E7F01100C5E09D /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F725327E7F01100C5E09D /* Strings.swift */; };
-		532F725827E7F3F100C5E09D /* MoviesSplitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F725727E7F3F100C5E09D /* MoviesSplitFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +89,6 @@
 		532F724827E7E21600C5E09D /* BaseWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebServiceTests.swift; sourceTree = "<group>"; };
 		532F724A27E7E72D00C5E09D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieCell.swift; path = MovieList/Scenes/MovieList/Views/MovieCell.swift; sourceTree = SOURCE_ROOT; };
 		532F725327E7F01100C5E09D /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		532F725727E7F3F100C5E09D /* MoviesSplitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSplitFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				532F722227E7B7E200C5E09D /* MovieList */,
-				532F725727E7F3F100C5E09D /* MoviesSplitFactory.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -431,7 +428,6 @@
 				5311E2D927E92F1C0079BA4E /* ErrorView.swift in Sources */,
 				532F723727E7BC5C00C5E09D /* ViewConfiguration.swift in Sources */,
 				532F723027E7B8D200C5E09D /* MovieListViewController.swift in Sources */,
-				532F725827E7F3F100C5E09D /* MoviesSplitFactory.swift in Sources */,
 				532F721F27E7872000C5E09D /* WebServiceError.swift in Sources */,
 				532F722B27E7B83700C5E09D /* MovieListCoordinator.swift in Sources */,
 				532F724627E7DF8700C5E09D /* MoviesResponse.swift in Sources */,

@@ -5,6 +5,7 @@ protocol MovieListDisplay: AnyObject {
     func hideLoading()
     func displayMovies(movies: [Movie])
     func displayMessage(message: String)
+    func displayTryAgainButton()
 }
 
 final class MovieListViewController: ViewController<MovieListInteracting> {
@@ -21,18 +22,29 @@ final class MovieListViewController: ViewController<MovieListInteracting> {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 140
+        tableView.rowHeight = 150
         tableView.register(MovieCell.self, forCellReuseIdentifier: String(describing: MovieCell.self))
         tableView.backgroundView = activity
         tableView.tableFooterView = UIView()
         return tableView
     }()
     
+    lazy var tryAgainButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 8
+        button.setTitle(Strings.Errors.tryAgain, for: .normal)
+        button.titleLabel?.font = UIFont.medium(weight: .bold)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
+        return button
+    }()
+    
     private var model = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Filmes"
+        title = Strings.NavigationBar.movieList
         interactor.requestMovies()
     }
     
@@ -74,12 +86,19 @@ extension MovieListViewController: MovieListDisplay {
     }
     
     func displayMessage(message: String) {
-        let errorView = ErrorView(errorMessage: message) { [weak self] in
-            self?.interactor.requestMovies()
-        }
+        let errorView = ErrorView(errorMessage: message)
+        tableView.addSubview(errorView)
         tableView.backgroundView = errorView
-        errorView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-        errorView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    func displayTryAgainButton() {
+        view.addSubview(tryAgainButton)
+        tryAgainButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        tryAgainButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tryAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -15).isActive = true
     }
 }
 
@@ -95,5 +114,12 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         let movie = model[indexPath.row]
         cell.setup(movie)
         return cell
+    }
+}
+
+private extension MovieListViewController {
+    @objc func tryAgain() {
+        tryAgainButton.removeFromSuperview()
+        interactor.requestMovies()
     }
 }

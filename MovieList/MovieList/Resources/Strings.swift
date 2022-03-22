@@ -13,4 +13,8 @@ enum Strings {
     enum Adult {
         static let isAdult = "+18"
     }
+    
+    enum NavigationBar {
+        static let movieList = "Movies"
+    }
 }

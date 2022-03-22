@@ -33,11 +33,11 @@ private extension MovieListInteractor {
     func handleRequestFailure(_ error: WebServiceError) {
         switch error {
         case .noInternet:
-            self.presenter.presentErrorMessage(message: Strings.Errors.noInternet)
+            self.showError(message: Strings.Errors.noInternet)
         case .timedOut:
-            self.presenter.presentErrorMessage(message: Strings.Errors.timeOut)
+            self.showError(message: Strings.Errors.timeOut)
         default:
-            self.presenter.presentErrorMessage(message: Strings.Errors.unexpected)
+            self.showError(message: Strings.Errors.unexpected)
         }
     }
     
@@ -46,6 +46,11 @@ private extension MovieListInteractor {
             self.presenter.presentMovies(movies: response.results)
             return
         }
-        self.presenter.presentErrorMessage(message: Strings.Errors.noMovies)
+        self.showError(message: Strings.Errors.noMovies)
+    }
+    
+    func showError(message: String){
+        self.presenter.presentErrorMessage(message: message)
+        self.presenter.presentTryAgainButton()
     }
 }

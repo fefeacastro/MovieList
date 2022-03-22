@@ -6,6 +6,7 @@ private final class MovieListPresenterSpy: MovieListPresenting {
     private(set) var stopPresentingLoadingCallsCount = 0
     private(set) var presentMoviesCallsCount = 0
     private(set) var presentErrorMessageCallsCount = 0
+    private(set) var presentTryAgainButtonCallsCount = 0
     private(set) var movies: [Movie]?
     private(set) var message: String?
     
@@ -25,6 +26,10 @@ private final class MovieListPresenterSpy: MovieListPresenting {
     func presentErrorMessage(message: String) {
         presentErrorMessageCallsCount += 1
         self.message = message
+    }
+    
+    func presentTryAgainButton() {
+        presentTryAgainButtonCallsCount += 1
     }
 }
 
@@ -75,6 +80,7 @@ class MovieListInteractorTests: XCTestCase {
         let fakeMessage = try XCTUnwrap(presenter.message)
 
         XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
         XCTAssertEqual(fakeMessage, Strings.Errors.noMovies)
     }
     
@@ -85,6 +91,29 @@ class MovieListInteractorTests: XCTestCase {
         let fakeMessage = try XCTUnwrap(presenter.message)
 
         XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.unexpected)
+    }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithUnexpectedMessage_WhenServiceReturnsURLFormat() throws {
+        service.result = .failure(.URLFormat)
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
+        XCTAssertEqual(fakeMessage, Strings.Errors.unexpected)
+    }
+    
+    func testRequestMovies_ShouldCallPresentErrorWithUnexpectedMessage_WhenServiceReturnsUnparseable() throws {
+        service.result = .failure(.unparseable)
+        interactor.requestMovies()
+
+        let fakeMessage = try XCTUnwrap(presenter.message)
+
+        XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
         XCTAssertEqual(fakeMessage, Strings.Errors.unexpected)
     }
     
@@ -95,6 +124,7 @@ class MovieListInteractorTests: XCTestCase {
         let fakeMessage = try XCTUnwrap(presenter.message)
 
         XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
         XCTAssertEqual(fakeMessage, Strings.Errors.timeOut)
     }
     
@@ -105,6 +135,7 @@ class MovieListInteractorTests: XCTestCase {
         let fakeMessage = try XCTUnwrap(presenter.message)
 
         XCTAssertEqual(presenter.presentErrorMessageCallsCount, 1)
+        XCTAssertEqual(presenter.presentTryAgainButtonCallsCount, 1)
         XCTAssertEqual(fakeMessage, Strings.Errors.noInternet)
     }
 }

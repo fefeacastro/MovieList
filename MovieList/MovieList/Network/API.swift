@@ -36,4 +36,9 @@ struct API {
     var value: String {
         "\(host)/\(version)/\(path.rawValue)/\(mediaType.rawValue)/\(timeWindow.rawValue)\(headerKey)\(key)"
     }
+    
+    static func moviePoster(path: String) -> URL? {
+        let posterHost = "https://image.tmdb.org/t/p/w500"
+        return URL(string: "\(posterHost)\(path)")
+    }
 }
