@@ -3,4 +3,5 @@ struct Movie: Decodable, Equatable {
     let overview: String?
     let adult: Bool?
     let posterPath: String?
+    let voteAverage: Double?
 }

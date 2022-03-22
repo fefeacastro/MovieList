@@ -11,10 +11,14 @@ enum Strings {
     }
     
     enum Adult {
-        static let isAdult = "+18"
+        static let isAdult = "🔞"
     }
     
     enum NavigationBar {
-        static let movieList = "Movies"
+        static let movieList = "Trending Movies"
+    }
+    
+    enum Votes {
+        static let star = "⭐️"
     }
 }
